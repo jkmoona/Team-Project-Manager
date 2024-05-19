@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Project App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js" integrity="sha512-luMnTJZ7oEchNDZAtQhgjomP1eZefnl82ruTH/3Oj/Yu5qYtwL7+dVRccACS/Snp1lFXq188XFipHKYE75IaQQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="client.js"></script>
+</head>
+
+<body>
+    <div id="login-container" class="container">
+        <h2>Login</h2>
+        <input type="text" id="login-username" placeholder="Username">
+        <input type="password" id="login-password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p>Don't have an account? <a href="#" onclick="showRegister()">Register here</a></p>
+    </div>
+
+    <div id="register-container" class="container hidden">
+        <h2>Register</h2>
+        <input type="text" id="register-username" placeholder="Username">
+        <input type="password" id="register-password" placeholder="Password">
+        <button onclick="register()">Register</button>
+        <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+    </div>
+
+    <div id="projects-container" class="container hidden">
+        <h2>Projects</h2>
+        <div>
+            <input type="text" id="project-name" placeholder="Project Name">
+            <button onclick="createProject()">Create Project</button>
+            <p id="project-key" class="hidden">Project Key: <span id="project-key-value"></span></p>
+        </div>
+        <div>
+            <input type="text" id="project-key-input" placeholder="Project Key">
+            <button onclick="joinProject(true)">Join Project</button>
+        </div>
+        <div>
+            <h3>Your Projects</h3>
+            <ul id="project-list"></ul>
+        </div>
+    </div>
+
+    <div id="chat-container" class="container hidden">
+        <h2>Project Chat</h2>
+        <p id="project-key-field"></p>
+        <button onclick="showProjects()">Back to Projects</button>
+        <div id="online-users">Online Users: <span id="online-users-list"></span></div>
+        <div id="project-chat"></div>
+        <input type="text" id="message-input" placeholder="Type a message">
+        <input type="file" id="file-input" />
+        <button onclick="sendMessage()">Send</button>
+        <button onclick="sendFile()">Send File</button>
+    </div>
+</body>
+
+</html>
